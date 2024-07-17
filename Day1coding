@@ -1,0 +1,157 @@
+1)input:An array of integers
+output:number of integers are lessser at the left side when compared to right side of last number
+Count the numbers in the array such thatb all the elements are strictly smmaller than it
+Test case 1:[2,4,5,6]
+output: 4
+Test case 2:[3,3,3,3,3]
+output :1
+HERE in the first approach i had mentioned size of an array first but at the Third way i chnage it i optimised it
+#include <stdio.h>
+int main()
+{
+   int a[100],count=0,i,n;
+   int max_val=a[i];
+printf("Enter size");
+scanf("%d",&n);
+printf("Enter array elements");
+  for( i=0;i<n;i++)
+  {
+      scanf("%d",&a[i]);
+  }
+  for( i=0;i<n;i++){
+      if(a[i]>max_val){
+          count++;
+      
+          max_val=a[i];
+      }
+  }
+      printf("count of such elements is equal to %d",count);
+
+    return 0;
+}
+##Second way i changed it and wrote in function type
+#include <iostream>
+using namespace std;
+int count_elements(int n,int a[]){
+    int count=0;
+    
+    int i;
+  int max_val=a[0];
+  /*or u can give a[0] as the maximum value*/
+  /*and then next in for loop u can give i=1*/
+    for(i=1;i<=n;i++){
+        if(a[i] > max_val){
+            count++;
+            max_val=a[i];
+        }
+           
+    }
+    return count;
+}
+
+int main()
+{
+    int n=5;
+    int a[n]={2,4,5,6,7};
+    int count=count_elements(n,a);
+    cout<<""<<count;
+    
+  }
+
+
+#third i chnaged and optimized not typing of size of n
+
+#include<stdio.h>
+int count_elements(int n,int arr[])
+{
+int count=1;
+int max=arr[0];
+int i=1;
+while(i<n)
+{
+count++;
+max=arr[i];
+}
+i++;
+
+}
+return count;
+}
+int main()
+{
+int n=5;
+int arr[n]={2,4,5,6,7};
+int count=count_elements(n,arr);
+cout<<""<<count;
+}
+
+##################################### 2problem##############################################################################
+2)n=5    
+a[]={4,5,0,2,0,0}       
+output should be in thus case what ever the 0 came it should be at the end  a[]={4,5,2,0,0,0}
+Explanation of the while Loop
+In the previous steps, all non-zero elements are moved to the front of the array. The index variable keeps track of the position where the next non-zero element should be placed. After all non-zero elements are moved, index points to the position immediately after the last non-zero element in the modified array.
+
+Now, we need to ensure that all remaining positions in the array are filled with zeros.
+
+Example Walkthrough
+Let's use the example array a[] = {4, 5, 0, 2, 0, 0} and walk through the steps:
+
+Initial State:
+
+Array: {4, 5, 0, 2, 0, 0}
+index = 0
+First Loop (Moving Non-Zero Elements):
+
+i = 0: a[0] = 4 is non-zero, so a[0] remains 4 and index becomes 1.
+i = 1: a[1] = 5 is non-zero, so a[1] remains 5 and index becomes 2.
+i = 2: a[2] = 0 is zero, so index remains 2.
+i = 3: a[3] = 2 is non-zero, so a[2] is set to 2 (moving it to the front), and index becomes 3.
+i = 4: a[4] = 0 is zero, so index remains 3.
+i = 5: a[5] = 0 is zero, so index remains 3.
+After the first loop, the array looks like this: {4, 5, 2, 2, 0, 0} (note that 2 is duplicated temporarily), and index is 3.
+
+Second Loop (Filling with Zeros):
+
+Now index is 3, and it points to the first position after the last non-zero element.
+The while loop fills the rest of the array from index to n-1 with zeros:
+index = 3: a[3] is set to 0, then index becomes 4.
+index = 4: a[4] is set to 0, then index becomes 5.
+index = 5: a[5] is set to 0, then index becomes 6.
+After the while loop, the array looks like this: {4, 5, 2, 0, 0, 0}.
+
+
+##############################################code#########################
+#include <iostream>
+using namespace std;
+
+void move_zeros_to_end(int n, int a[]) {
+    int index = 0; // Position to place the next non-zero element
+
+    // Move all non-zero elements to the front of the array
+    for (int i = 0; i < n; i++) {
+        if (a[i] != 0) {
+            a[index++] = a[i];
+        }
+    }
+
+    // Fill the rest of the array with zeros
+    while (index < n) {
+        a[index++] = 0;
+    }
+}
+
+int main() {
+    int n = 6; // Array size
+    int a[] = {4, 5, 0, 2, 0, 0}; // Initial array
+
+    move_zeros_to_end(n, a);
+
+    // Print the modified array
+    for (int i = 0; i < n; i++) {
+        cout << a[i] << " ";
+    }
+
+    return 0;
+}
+
