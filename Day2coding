@@ -1,0 +1,31 @@
+Input must be valid string
+t1 "*#*#*"
+ouput :minmum number required to get valid string is 1
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int cs = 0;
+    int ch = 0;
+    char s[100]; // Allocate space for the input string
+    
+    printf("Enter input string: ");
+    scanf("%s", s); // No need to use & for an array
+
+    int i = 0;
+    while (s[i] != '\0') { // Use while loop to iterate over the string
+        if (s[i] == '*') { // Use single quotes for character comparison
+            cs++;
+        } if(s[i]=='#') {
+            ch++;
+        }
+        // Increment the index
+        
+        i++;
+    }
+    
+    printf("Absolute difference: %d\n", abs(ch - cs));
+    
+    return 0;
+}
