@@ -50,3 +50,36 @@ int main()
     cout <<"The smallest smallestElement in the array 2 is:"<<min;
     return 0;
 }
+
+
+
+#############################################2 problem#######################################################################
+###########3Largest number in the array############################################3
+
+
+#include<iostream>
+using namespace std;
+int largestElement(int arr[],int n){
+    int max=arr[0];
+    for(int i=0;i<n;i++){
+        if(max<arr[i]){
+            max=arr[i];
+        }
+    }
+        return max;
+    
+
+}
+int main(){
+    int arr1[]={2,4,5,1,0};
+    int n=5;
+    int max=largestElement(arr1,n);
+    cout<<"The  largestElement in array is:"<<max<<endl;
+    
+    int arr2[]={2,4,5,1,0,8,9,6};
+     n=8;
+     max=largestElement(arr2,n);
+    cout<<"The  largestElement in array is:"<<max;
+    
+    return 0;
+}
